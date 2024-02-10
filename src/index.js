@@ -5,15 +5,13 @@ import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const formSearchEl = document.querySelector('.search-form');
+const form = document.querySelector('.search-form');
 const galleryEl = document.querySelector('.gallery');
 const loadMoreBtnEl = document.querySelector('.load-more');
-
 const pixabayApi = new PixabayAPI();
-
 let gallery = new SimpleLightbox('.gallery a');
 
-const handleSearchFoto = async ev => {
+const SearchPhoto = async ev => {
   ev.preventDefault();
   galleryEl.innerHTML = '';
   loadMoreBtnEl.classList.add('is-hidden');
@@ -57,7 +55,7 @@ async function searchGallery() {
   }
 }
 
-function handleLoadMoreBtnClick() {
+function LoadMoreBtnClick() {
   pixabayApi.page += 1;
   searchMorePhoto();
 }
@@ -80,5 +78,5 @@ async function searchMorePhoto() {
   }
 }
 
-formSearchEl.addEventListener('submit', handleSearchFoto);
-loadMoreBtnEl.addEventListener('click', handleLoadMoreBtnClick);
+form.addEventListener('submit', SearchPhoto);
+loadMoreBtnEl.addEventListener('click', LoadMoreBtnClick);
